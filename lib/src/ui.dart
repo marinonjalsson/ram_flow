@@ -10,7 +10,7 @@ enum RamFlowUiState { show, init, hide, error }
 class RamFlowUi extends RamFlow<RamFlowUiState> {
   ///
   RamFlowUi({
-    super.i,
+    super.probe,
   }) : super(RamFlowUiState.init);
 
   //void update() => pipe(FlowUiState.init);

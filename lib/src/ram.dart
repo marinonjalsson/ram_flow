@@ -7,7 +7,7 @@ class RamFlow<T> extends RamFlowPipe<T> {
   RamFlow(
     T init, {
     this.historyLength = 6,
-    super.i,
+    super.probe,
   }) : _data = init;
 
   ///
