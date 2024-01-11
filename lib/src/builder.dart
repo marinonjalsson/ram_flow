@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:ram_flow/src/ctl.dart';
-import 'package:ram_flow/src/pipe.dart';
+import 'package:ram_flow/ram_flow.dart';
 
 /// FlowBuilder with one FlowRam
 class RamFlowBuilder<T> extends StatefulWidget {
   ///
-  const RamFlowBuilder({required this.pipe, required this.builder, super.key});
+  const RamFlowBuilder({required this.ram, required this.builder, super.key});
 
   ///
-  final Widget Function(T?) builder;
+  final Widget Function(T) builder;
 
   ///
-  final RamFlowPipe<T> pipe;
+  final RamFlow<T> ram;
 
   @override
   State<RamFlowBuilder<T>> createState() => _RamFlowBuilderState<T>();
@@ -22,7 +21,7 @@ class _RamFlowBuilderState<T> extends State<RamFlowBuilder<T>> {
 
   @override
   void initState() {
-    ctl = widget.pipe.asFlowCtl();
+    ctl = widget.ram.asFlowCtl();
     super.initState();
   }
 
@@ -35,10 +34,10 @@ class _RamFlowBuilderState<T> extends State<RamFlowBuilder<T>> {
   @override
   Widget build(BuildContext context) => StreamBuilder<T>(
         stream: ctl.stream,
-        //initialData: widget.flowRam.value,
+        //initialData: widget.ram.value,
         builder: (_, AsyncSnapshot<T> snapshot) {
-          final value = snapshot.data; //?? widget.flowRam.value;
-          return widget.builder(value);
+          //final value = snapshot.data; //?? widget.flowRam.value;
+          return widget.builder(widget.ram.value);
         },
       );
 }
