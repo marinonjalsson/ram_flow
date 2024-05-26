@@ -44,4 +44,25 @@ class RamFlow<T> extends RamFlowPipe<T> {
     }
     super.pipe(value);
   }
+
+  /// Add value to data. Works only with int and double.
+  void add(T value) {
+    if (_data == null) {
+      set(value);
+      return;
+    }
+    switch (T.runtimeType) {
+      case double:
+        final d = _data as double;
+        final v = value as double;
+        set((v + d) as T);
+      case int:
+        final d = _data as int;
+        final v = value as int;
+        set((v + d) as T);
+      default:
+        throw Exception(
+            "Can not use 'add' function with ${T.runtimeType} type! ");
+    }
+  }
 }
