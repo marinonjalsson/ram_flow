@@ -52,7 +52,7 @@ class RamFlow<T> extends RamFlowPipe<T> {
       set(value);
       return;
     }
-    switch (T.runtimeType) {
+    switch (T) {
       case double:
         final d = _data as double;
         final v = value as double;
