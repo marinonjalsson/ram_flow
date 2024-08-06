@@ -46,6 +46,13 @@ class RamFlow<T> extends RamFlowPipe<T> {
     super.pipe(value);
   }
 
+  ///
+  void setIfNotSame(T value) {
+    if (isNotSame(value)) {
+      set(value);
+    }
+  }
+
   /// Add value to data. Works only with int, double and Offset.
   void add(T value) {
     if (_data == null) {
