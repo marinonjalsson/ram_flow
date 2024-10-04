@@ -7,9 +7,14 @@ class RamFlow<T> extends RamFlowPipe<T> {
   ///
   RamFlow(
     T init, {
+    this.onNewValue,
     this.historyLength = 6,
     super.probe,
   }) : _data = init;
+
+  /// Callback function for new value.
+  /// Can be used for updating another RAM value.
+  void Function(T)? onNewValue;
 
   ///
   final int historyLength;
@@ -44,6 +49,7 @@ class RamFlow<T> extends RamFlowPipe<T> {
       }
     }
     super.pipe(value);
+    onNewValue?.call(value);
   }
 
   ///
