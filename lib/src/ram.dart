@@ -7,16 +7,20 @@ class RamFlow<T> extends RamFlowPipe<T> {
   ///
   RamFlow(
     T init, {
-    this.onNewValue,
+    this.onSetValue,
+    this.onGetValue,
     this.historyLength = 6,
     super.probe,
   }) : _data = init {
-    onNewValue?.call(init);
+    onSetValue?.call(init);
   }
 
   /// Callback function for new value.
   /// Can be used for updating another RAM value.
-  void Function(T)? onNewValue;
+  void Function(T)? onSetValue;
+
+  /// Callback function for handling/reading/getting the value.
+  T Function()? onGetValue;
 
   ///
   final int historyLength;
@@ -25,7 +29,13 @@ class RamFlow<T> extends RamFlowPipe<T> {
   final Queue<T> _history = Queue();
 
   ///
-  T get value => _data;
+  T get value {
+    if (onGetValue != null) {
+      return onGetValue!();
+    } else {
+      return _data;
+    }
+  }
 
   ///
   Queue<T> get history => _history;
@@ -51,7 +61,7 @@ class RamFlow<T> extends RamFlowPipe<T> {
       }
     }
     super.pipe(value);
-    onNewValue?.call(value);
+    onSetValue?.call(value);
   }
 
   ///
