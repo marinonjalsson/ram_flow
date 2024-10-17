@@ -1,4 +1,4 @@
-import 'package:ram_flow/src/ram.dart';
+import 'package:ram_flow/src/data.dart';
 
 /// Awaliable states.
 // ignore: public_member_api_docs
@@ -7,7 +7,7 @@ enum RamFlowUiState { show, init, hide, error }
 /// Very simple flow.
 /// Used just send ui events.
 /// Ideal for simple ui updates.
-class RamFlowUi extends RamFlow<RamFlowUiState> {
+class RamFlowUi extends RamFlowData<RamFlowUiState> {
   ///
   RamFlowUi({
     super.probe,

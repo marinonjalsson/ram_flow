@@ -6,8 +6,7 @@ import 'package:ram_flow/src/pipe.dart';
 ///
 class RamFlowCtl<T> {
   ///
-  RamFlowCtl(RamFlowPipe<T> parent, {bool brodcast = false})
-      : _parent = parent {
+  RamFlowCtl(RamPipe<T> parent, {bool brodcast = false}) : _parent = parent {
     if (brodcast) {
       _ctl = StreamController.broadcast();
     } else {
@@ -16,7 +15,7 @@ class RamFlowCtl<T> {
     stream = _ctl.stream;
     _parent.addFlowCtl(this);
   }
-  final RamFlowPipe<T> _parent;
+  final RamPipe<T> _parent;
   late StreamController<T> _ctl;
 
   ///

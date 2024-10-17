@@ -5,7 +5,7 @@ import 'package:ram_flow/src/pipe.dart';
 /// Very simple flow.
 /// Used just send events with no data.
 /// Ideal for simple ui updates.
-class RamFlowUpdate extends RamFlowPipe<void> {
+class RamFlowUpdate extends RamPipe<void> {
   RamFlowUpdate({
     super.probe,
   });

@@ -1,7 +1,7 @@
 import 'package:ram_flow/src/pipe.dart';
 
 ///
-class RamFlowList<T> extends RamFlowPipe<List<T>> {
+class RamFlowList<T> extends RamPipe<List<T>> {
   ///
   RamFlowList({
     super.probe,

@@ -3,9 +3,9 @@
 import 'package:ram_flow/src/ctl.dart';
 
 ///
-class RamFlowPipe<T> {
+abstract class RamPipe<T> {
   ///
-  RamFlowPipe({
+  RamPipe({
     this.probe,
   });
   final List<RamFlowCtl<T>> _flowCtls = [];

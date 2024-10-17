@@ -3,24 +3,24 @@ import 'dart:ui';
 import 'package:ram_flow/src/pipe.dart';
 
 ///
-class RamFlow<T> extends RamFlowPipe<T> {
+class RamFlow<T> extends RamPipe<T> {
   ///
   RamFlow(
     T init, {
-    this.onSetValue,
-    this.onGetValue,
+    //this.onSetValue,
+    //this.onGetValue,
     this.historyLength = 6,
     super.probe,
   }) : _data = init {
-    onSetValue?.call(init);
+    //onSetValue?.call(init);
   }
 
   /// Callback function for new value.
   /// Can be used for updating another RAM value.
-  void Function(T)? onSetValue;
+  // void Function(T)? onSetValue;
 
   /// Callback function for handling/reading/getting the value.
-  T Function()? onGetValue;
+  // T Function()? onGetValue;
 
   ///
   final int historyLength;
@@ -30,11 +30,11 @@ class RamFlow<T> extends RamFlowPipe<T> {
 
   ///
   T get value {
-    if (onGetValue != null) {
-      return onGetValue!();
-    } else {
-      return _data;
-    }
+    //if (onGetValue != null) {
+    //  return onGetValue!();
+    //} else {
+    return _data;
+    //}
   }
 
   ///
@@ -61,7 +61,7 @@ class RamFlow<T> extends RamFlowPipe<T> {
       }
     }
     super.pipe(value);
-    onSetValue?.call(value);
+    //onSetValue?.call(value);
   }
 
   ///

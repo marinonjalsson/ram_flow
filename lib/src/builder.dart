@@ -4,13 +4,17 @@ import 'package:ram_flow/ram_flow.dart';
 /// FlowBuilder with one FlowRam
 class RamFlowBuilder<T> extends StatefulWidget {
   ///
-  const RamFlowBuilder({required this.ram, required this.builder, super.key});
+  const RamFlowBuilder({
+    required this.ramflow,
+    required this.builder,
+    super.key,
+  });
 
   ///
   final Widget Function(T) builder;
 
   ///
-  final RamFlow<T> ram;
+  final RamFlow<T> ramflow;
 
   @override
   State<RamFlowBuilder<T>> createState() => _RamFlowBuilderState<T>();
@@ -21,7 +25,7 @@ class _RamFlowBuilderState<T> extends State<RamFlowBuilder<T>> {
 
   @override
   void initState() {
-    ctl = widget.ram.asFlowCtl();
+    ctl = widget.ramflow.asFlowCtl();
     super.initState();
   }
 
@@ -37,7 +41,7 @@ class _RamFlowBuilderState<T> extends State<RamFlowBuilder<T>> {
         //initialData: widget.ram.value,
         builder: (_, AsyncSnapshot<T> snapshot) {
           //final value = snapshot.data; //?? widget.flowRam.value;
-          return widget.builder(widget.ram.value);
+          return widget.builder(widget.ramflow.value);
         },
       );
 }
