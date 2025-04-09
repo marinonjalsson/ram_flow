@@ -1,9 +1,9 @@
 import 'package:ram_flow/src/pipe.dart';
 
 ///
-abstract class RamFlow<T> extends RamPipe<T> {
+abstract class RamFlowPipe<T> extends RamPipe<T> {
   ///
-  RamFlow({
+  RamFlowPipe({
     super.probe,
   });
 

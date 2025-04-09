@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:ram_flow/ram_flow.dart';
 
 ///
-class RamFlowData<T> extends RamFlow<T> {
+class RamFlowData<T> extends RamFlowPipe<T> {
   ///
   RamFlowData(
     T init, {
