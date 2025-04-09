@@ -33,9 +33,9 @@ class RamFlowList<T> extends RamFlowPipe<List<T>> {
   void set(List<T> value) {
     this.clear();
     this.list.addAll(value);
-    super.pipe(value);
+    super.pipe(this.list);
   }
 
   @override
-  List<T> get value => this.value;
+  List<T> get value => this.list;
 }
