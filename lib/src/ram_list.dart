@@ -1,7 +1,7 @@
-import 'package:ram_flow/src/pipe.dart';
+import 'package:ram_flow/ram_flow.dart';
 
 ///
-class RamFlowList<T> extends RamPipe<List<T>> {
+class RamFlowList<T> extends RamFlowPipe<List<T>> {
   ///
   RamFlowList({
     super.probe,
@@ -28,4 +28,14 @@ class RamFlowList<T> extends RamPipe<List<T>> {
     list.clear();
     super.pipe(list);
   }
+
+  @override
+  void set(List<T> value) {
+    this.clear();
+    this.list.addAll(value);
+    super.pipe(value);
+  }
+
+  @override
+  List<T> get value => this.value;
 }

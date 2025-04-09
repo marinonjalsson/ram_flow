@@ -1,6 +1,6 @@
 name: ram_flow
 description: "The RafFlow package."
-version: 1.0.7
+version: 1.0.8
 homepage:
 
 environment:
