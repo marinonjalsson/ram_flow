@@ -1,6 +1,6 @@
 import 'dart:collection';
 import 'dart:ui';
-import 'package:ram_flow/ram_flow.dart';
+import 'package:ram_flow/src/flow.dart';
 
 ///
 class RamFlowData<T> extends RamFlow<T> {
@@ -30,7 +30,6 @@ class RamFlowData<T> extends RamFlow<T> {
   ///
   Queue<T> get history => _history;
 
-
   ///
   @override
   void set(T value) {
@@ -44,7 +43,6 @@ class RamFlowData<T> extends RamFlow<T> {
     super.pipe(value);
     //onSetValue?.call(value);
   }
-
 
   /// Add value to data. Works only with int, double and Offset.
   void add(T value) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ram_flow/ram_flow.dart';
+import 'package:ram_flow/src/ctl.dart';
+import 'package:ram_flow/src/flow.dart';
 
 /// FlowBuilder with one FlowRam
 class RamFlowBuilder<T> extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:ram_flow/ram_flow.dart';
+import 'package:ram_flow/src/flow.dart';
 
 ///
 class RamFlowFunc<T> extends RamFlow<T> {
