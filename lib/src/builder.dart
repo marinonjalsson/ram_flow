@@ -15,7 +15,7 @@ class RamFlowBuilder<T> extends StatefulWidget {
   final Widget Function(T) builder;
 
   ///
-  final RamFlow<T> ramflow;
+  final RamFlowPipe<T> ramflow;
 
   @override
   State<RamFlowBuilder<T>> createState() => _RamFlowBuilderState<T>();

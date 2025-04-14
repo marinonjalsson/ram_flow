@@ -3,13 +3,21 @@ import 'dart:ui';
 import 'package:ram_flow/src/flow.dart';
 
 ///
-class RamFlowData<T> extends RamFlow<T> {
+class RamFlowData<T> extends RamFlowPipe<T> {
   ///
   RamFlowData(
     T init, {
     this.historyLength = 6,
     super.probe,
-  }) : _data = init;
+  })  : _data = init,
+        assert(
+          [String, int, double, Offset].contains(T),
+          '<T> must be String, int, double or Offset!',
+        ) {
+    if (historyLength < 0) {
+      throw Exception('History length must be greater than 0!');
+    }
+  }
 
   ///
   final int historyLength;

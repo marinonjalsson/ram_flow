@@ -1,7 +1,7 @@
 import 'package:ram_flow/src/flow.dart';
 
 ///
-class RamFlowFunc<T> extends RamFlow<T> {
+class RamFlowFunc<T> extends RamFlowPipe<T> {
   ///
   RamFlowFunc({
     required this.onSetValue,
