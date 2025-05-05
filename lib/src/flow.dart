@@ -4,7 +4,7 @@ import 'package:ram_flow/src/pipe.dart';
 abstract class RamFlowPipe<T> extends RamPipe<T> {
   ///
   RamFlowPipe({
-    super.probe,
+    super.log,
   });
 
   ///

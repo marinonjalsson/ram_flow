@@ -7,7 +7,7 @@ import 'package:ram_flow/src/pipe.dart';
 /// Ideal for simple ui updates.
 class RamFlowUpdate extends RamPipe<void> {
   RamFlowUpdate({
-    super.probe,
+    super.log,
   });
 
   void update() => pipe(null);

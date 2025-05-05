@@ -6,7 +6,7 @@ class RamFlowFunc<T> extends RamFlowPipe<T> {
   RamFlowFunc({
     required this.onSetValue,
     required this.onGetValue,
-    super.probe,
+    super.log,
   });
 
   /// Callback function for new value.

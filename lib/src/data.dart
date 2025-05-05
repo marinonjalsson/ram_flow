@@ -8,12 +8,8 @@ class RamFlowData<T> extends RamFlowPipe<T> {
   RamFlowData(
     T init, {
     this.historyLength = 6,
-    super.probe,
-  })  : _data = init,
-        assert(
-          [String, int, double, Offset].contains(T),
-          '<T> must be String, int, double or Offset!',
-        ) {
+    super.log,
+  }) : _data = init {
     if (historyLength < 0) {
       throw Exception('History length must be greater than 0!');
     }
@@ -58,23 +54,27 @@ class RamFlowData<T> extends RamFlowPipe<T> {
       set(value);
       return;
     }
-    switch (T) {
-      case double:
-        final d = _data as double;
-        final v = value as double;
-        set((v + d) as T);
-      case int:
-        final d = _data as int;
-        final v = value as int;
-        set((v + d) as T);
-      case Offset:
-        final d = _data as Offset;
-        final v = value as Offset;
-        set(Offset(d.dx + v.dx, d.dy + v.dy) as T);
-      default:
-        throw Exception(
-          "Can not use 'add' function with ${T.runtimeType} type! ",
-        );
+    if (T == double) {
+      final d = _data as double;
+      final v = value as double;
+      set((v + d) as T);
+      return;
     }
+    if (T == int) {
+      final d = _data as int;
+      final v = value as int;
+      set((v + d) as T);
+      return;
+    }
+    if (T == Offset) {
+      final d = _data as Offset;
+      final v = value as Offset;
+      set(Offset(d.dx + v.dx, d.dy + v.dy) as T);
+      return;
+    }
+    throw Exception(
+      "Can not use 'add' function with ${T.runtimeType} type! "
+      '(only:double,int,Offset)',
+    );
   }
 }

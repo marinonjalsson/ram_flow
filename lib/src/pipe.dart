@@ -6,12 +6,12 @@ import 'package:ram_flow/src/ctl.dart';
 abstract class RamPipe<T> {
   ///
   RamPipe({
-    this.probe,
+    this.log,
   });
   final List<RamFlowCtl<T>> _flowCtls = [];
 
   /// The log callback if used.
-  final ({String label, void Function(dynamic) i})? probe;
+  final ({String label, void Function(dynamic) i})? log;
 
   ///
   void addFlowCtl(RamFlowCtl<T> flowCtl) => _flowCtls.add(flowCtl);
@@ -73,9 +73,9 @@ abstract class RamPipe<T> {
 
   /// Send value of type T to all listeners.
   void pipe(T value) {
-    if (probe != null) {
+    if (log != null) {
       // ignore: prefer_null_aware_method_calls
-      probe!.i('(RamFlow) ${probe!.label}:$value');
+      log!.i('(RamFlow) ${log!.label}:$value');
     }
     for (final ctl in _flowCtls) {
       ctl.add(data: value);

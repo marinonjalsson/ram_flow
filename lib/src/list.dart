@@ -4,7 +4,7 @@ import 'package:ram_flow/src/flow.dart';
 class RamFlowList<T> extends RamFlowPipe<List<T>> {
   ///
   RamFlowList({
-    super.probe,
+    super.log,
   });
 
   /// The data. Not connected directly to subscribers.
