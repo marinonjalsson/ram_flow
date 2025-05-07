@@ -12,12 +12,6 @@ class RamFlowList<T> extends RamFlowPipe<List<T>> {
   final list = <T>[];
 
   /// Adds item from list and notifies subscribers.
-  void addAll(List<T> alist) {
-    list.addAll(alist);
-    super.pipe(list);
-  }
-
-  /// Adds item from list and notifies subscribers.
   void add(T item) {
     list.add(item);
     super.pipe(list);
